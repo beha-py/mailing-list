@@ -12,7 +12,7 @@ def handle_uploaded_file(emails, file_name):
             file.write(n)
 
 
-def s_mail(text, file_name, user_email):
+def s_mail(text, subject, file_name, user_email):
     path = f'media\mail\{file_name}'  # путь к файла с почтами
 
     with open(path, 'r') as file1:
@@ -24,7 +24,7 @@ def s_mail(text, file_name, user_email):
 
         # отправляем письмо 
         send_mail( 
-            subject='Subject here',  # заголовок 
+            subject=subject,  # заголовок 
             message=text,  # текст письма
             from_email=user_email,  # имейл отправителя 
             recipient_list=emails,  # имейл получателей 

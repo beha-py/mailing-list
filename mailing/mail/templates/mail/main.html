@@ -1,26 +1,36 @@
 {% extends "mail/base.html" %}
 
 {% block content %}
-    <div class="container">
-        <div class="col-lg-5">
-            <div class="card-body">
-                <form action="{% url 'mail:main' %}" method="post" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    <div class="form-group">
-                        <label for="{{ form.text.id_for_label }}" class="small mb-1">Text</label> 
-                        {{ form.text }}
+<div class="container">
+    <div class="col-lg-5">
+        <div class="card-body">
+            <form action="{% url 'mail:main' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">From</label>
+                    <div class="col-sm-10">
+                        <input type="text" readonly class="form-control-plaintext" id="staticEmail" value={{ user.email }}>
                     </div>
-                    <div class="form-group">
-                        <label for="{{ form.file.id_for_label }}" class="small mb-1">File</label> 
-                        {{ form.file }}
-                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.subject.id_for_label }}" class="big mb-2">Subject</label>
+                    {{ form.subject }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.text.id_for_label }}" class="big mb-2">Text</label>
+                    {{ form.text }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.file.id_for_label }}" class="big mb-2">File</label>
+                    {{ form.file }}
+                </div>
 
-                    <!-- Button submit -->
-                    <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-                        <input class="btn btn-primary" type="submit" value="Confirm">
-                    </div>
-                </form>
-            </div>
+                <!-- Button submit -->
+                <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
+                    <input class="btn btn-primary" type="submit" value="Confirm">
+                </div>
+            </form>
         </div>
     </div>
+</div>
 {% endblock %}

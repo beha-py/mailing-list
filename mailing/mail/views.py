@@ -20,7 +20,7 @@ def main(request):
             user_email = request.user.email  # имейл пользователя
 
             handle_uploaded_file(request.FILES['file'], file_name)  # save txt file with emails
-            s_mail(request.POST['text'], file_name, user_email)  # send_mails
+            s_mail(request.POST['text'], request.POST['subject'], file_name, user_email)  # send_mails
 
             return HttpResponseRedirect(reverse('mail:main'))  # отправляем на гл.страницу
     else:
