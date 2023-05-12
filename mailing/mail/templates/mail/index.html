@@ -19,7 +19,12 @@
       <p class="lead">Convenient email delivery for your business and work. Add template and your csv file and send
         emails by co.email!</p>
       <p class="lead">
-        <a href="{% url 'mail:main' %}" class="btn btn-lg btn-light fw-bold border-white bg-white">Learn more</a>
+      {% comment %} Если пользователь зареган то на главную страницу, если нет то на страницу регистрации {% endcomment %}
+      {% if user.is_authenticated %}
+        <a href="{% url 'mail:main' %}" class="btn btn-lg btn-light fw-bold border-white bg-white">Try now!</a>
+      {% else %}
+        <a href="{% url 'companies:registration' %}" class="btn btn-lg btn-light fw-bold border-white bg-white">Registration</a>
+      {% endif %}
       </p>
     </main>
 
